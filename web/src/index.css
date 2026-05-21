@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f1923;
+  --bg-card: #1a2733;
+  --bg-input: #1e2d3d;
+  --border: #2a3f52;
+  --text: #e0e6ed;
+  --text-muted: #8899a6;
+  --accent: #4fc3f7;
+  --accent-dim: #2980b9;
+  --terra: #c0855c;
+  --ventus: #7ec87e;
+  --aqua: #6cb4ee;
+  --rate-zero: #4a4a5a;
+  --rate-partial: #e6b84d;
+  --rate-full: #5cb85c;
+  --radius: 6px;
+  --font: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
