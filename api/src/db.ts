@@ -1,6 +1,6 @@
 import { Database } from "bun:sqlite";
 
-const DB_PATH = process.env.DB_PATH ?? "/app/db/khbbs.db";
+const DB_PATH = process.env.DB_PATH ?? "/app/api/db/khbbs.db";
 
 let db: Database;
 
