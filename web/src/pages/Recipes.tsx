@@ -45,6 +45,7 @@ export default function Recipes() {
   const [ingredient, setIngredient] = useState('');
   const [character, setCharacter] = useState('');
   const [type, setType] = useState('');
+  const [ability, setAbility] = useState('');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -54,12 +55,13 @@ export default function Recipes() {
       if (ingredient) params.ingredient = ingredient;
       if (character) params.character = character;
       if (type) params.type = type;
+      if (ability) params.ability = ability;
       api.recipes(Object.keys(params).length > 0 ? params : undefined)
         .then(setRecipes)
         .finally(() => setLoading(false));
     }, 250);
     return () => clearTimeout(timeout);
-  }, [result, ingredient, character, type]);
+  }, [result, ingredient, character, type, ability]);
 
   return (
     <div className="page">
@@ -77,6 +79,13 @@ export default function Recipes() {
           placeholder="Filter by ingredient..."
           value={ingredient}
           onChange={(e) => setIngredient(e.target.value)}
+          className="search-input"
+        />
+        <input
+          type="text"
+          placeholder="Filter by ability..."
+          value={ability}
+          onChange={(e) => setAbility(e.target.value)}
           className="search-input"
         />
         <select value={character} onChange={(e) => setCharacter(e.target.value)} className="select-input">

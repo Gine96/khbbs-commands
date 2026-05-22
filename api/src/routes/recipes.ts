@@ -9,6 +9,7 @@ recipes.get("/", (c) => {
   const ingredient = c.req.query("ingredient");
   const character = c.req.query("character");
   const type = c.req.query("type");
+  const ability = c.req.query("ability");
 
   const conditions: string[] = [];
   const params: (string | number)[] = [];
@@ -35,6 +36,13 @@ recipes.get("/", (c) => {
   if (type) {
     conditions.push("recipe_type = ?");
     params.push(type);
+  }
+
+  if (ability) {
+    conditions.push(
+      "SUBSTR(recipe_type, 6) IN (SELECT tca.recipe_type FROM type_crystal_abilities tca JOIN abilities ab ON tca.ability_id = ab.id WHERE ab.name LIKE ?)"
+    );
+    params.push(`%${ability}%`);
   }
 
   let sql = "SELECT * FROM v_recipes";
